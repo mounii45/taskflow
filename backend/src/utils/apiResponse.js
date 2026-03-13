@@ -1,0 +1,19 @@
+class ApiError extends Error {
+  constructor(statusCode, message) {
+    super(message);
+    this.statusCode = statusCode;
+    this.name = 'ApiError';
+  }
+}
+
+class ApiResponse {
+  static success(res, data, message = 'Success', statusCode = 200) {
+    return res.status(statusCode).json({ success: true, message, data });
+  }
+
+  static paginated(res, data, pagination, message = 'Success') {
+    return res.status(200).json({ success: true, message, data, pagination });
+  }
+}
+
+module.exports = { ApiError, ApiResponse };
