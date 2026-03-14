@@ -116,3 +116,114 @@ body {
 .toast.success { background: rgba(52,211,153,0.1); border-color: var(--green); color: var(--green); }
 .toast.error { background: rgba(248,113,113,0.1); border-color: var(--red); color: var(--red); }
 .toast.info { background: rgba(96,165,250,0.1); border-color: var(--blue); color: var(--blue); }
+
+/* ── Mobile Responsive ────────────────────────────────────────────────────── */
+
+/* Hide sidebar on mobile, show hamburger */
+@media (max-width: 768px) {
+
+  /* App layout — stack vertically */
+  div[style*="display: flex; min-height: 100vh"] {
+    flex-direction: column !important;
+  }
+
+  /* Sidebar becomes top navbar */
+  aside {
+    width: 100% !important;
+    min-height: unset !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+    flex-direction: row !important;
+    padding: 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+
+  /* Main content full width */
+  main {
+    padding: 16px !important;
+  }
+
+  /* Cards stack properly */
+  .animate-in {
+    padding: 0 !important;
+  }
+
+  /* Stat grid — 2 columns on mobile */
+  div[style*="gridTemplateColumns: repeat(auto-fit, minmax(160px"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Task filters stack vertically */
+  div[style*="display: flex; gap: 12px; flex-wrap: wrap"] {
+    flex-direction: column !important;
+  }
+
+  /* Modal full screen on mobile */
+  div[style*="max-width: 480px"],
+  div[style*="max-width: 360px"] {
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    min-height: 100vh !important;
+  }
+
+  /* Table scroll on mobile */
+  table {
+    display: block !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+  }
+
+  /* Auth pages padding */
+  div[style*="min-height: 100vh; background: var(--bg); display: flex"] {
+    padding: 16px !important;
+    align-items: flex-start !important;
+    padding-top: 40px !important;
+  }
+
+  /* Buttons full width in forms */
+  button[style*="width: 100%"] {
+    font-size: 1rem !important;
+  }
+
+  /* Dashboard header */
+  div[style*="max-width: 900px"] {
+    max-width: 100% !important;
+  }
+
+  /* Priority breakdown grid */
+  div[style*="display: flex; gap: 24px"] {
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  /* Admin analytics grid */
+  div[style*="gridTemplateColumns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Toast position on mobile */
+  .toast-container {
+    top: auto !important;
+    bottom: 20px !important;
+    right: 10px !important;
+    left: 10px !important;
+  }
+
+  .toast {
+    max-width: 100% !important;
+  }
+}
+
+/* Small phones */
+@media (max-width: 400px) {
+  div[style*="gridTemplateColumns: repeat(auto-fit, minmax(160px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  h1[style*="font-size: 2rem"] {
+    font-size: 1.5rem !important;
+  }
+}
