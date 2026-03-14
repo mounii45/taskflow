@@ -1,4 +1,4 @@
-const { body, query, param } = require('express-validator');
+const { body, query } = require('express-validator');
 
 const createTaskValidator = [
   body('title')
@@ -20,9 +20,8 @@ const createTaskValidator = [
     .isIn(['low', 'medium', 'high']).withMessage('Priority must be low, medium, or high'),
 
   body('dueDate')
-    .optional()
-    .isISO8601().withMessage('Due date must be a valid ISO 8601 date')
-    .custom((val) => new Date(val) > new Date()).withMessage('Due date must be in the future'),
+    .optional({ nullable: true, checkFalsy: true })
+    .isISO8601().withMessage('Due date must be a valid date'),
 
   body('tags')
     .optional()
@@ -34,7 +33,9 @@ const updateTaskValidator = [
   body('description').optional().trim().isLength({ max: 500 }).withMessage('Description max 500 chars'),
   body('status').optional().isIn(['todo', 'in_progress', 'done']).withMessage('Invalid status'),
   body('priority').optional().isIn(['low', 'medium', 'high']).withMessage('Invalid priority'),
-  body('dueDate').optional().isISO8601().withMessage('Invalid date format'),
+  body('dueDate')
+    .optional({ nullable: true, checkFalsy: true })
+    .isISO8601().withMessage('Invalid date format'),
 ];
 
 const taskQueryValidator = [

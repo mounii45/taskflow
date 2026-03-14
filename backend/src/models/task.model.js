@@ -26,12 +26,6 @@ const taskSchema = new mongoose.Schema({
   },
   dueDate: {
     type: Date,
-    validate: {
-      validator: function (v) {
-        return !v || v > new Date();
-      },
-      message: 'Due date must be in the future',
-    },
   },
   tags: [{
     type: String,
@@ -51,6 +45,6 @@ const taskSchema = new mongoose.Schema({
 // Indexes
 taskSchema.index({ owner: 1, status: 1 });
 taskSchema.index({ owner: 1, priority: 1 });
-taskSchema.index({ title: 'text', description: 'text' }); // Full-text search
+taskSchema.index({ title: 'text', description: 'text' });
 
 module.exports = mongoose.model('Task', taskSchema);

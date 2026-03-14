@@ -8,7 +8,8 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const loadUser = useCallback(async () => {
-    const token = localStorage.getItem('accessToken');
+    const token = localStorage.get
+    tem('accessToken');
     if (!token) { setLoading(false); return; }
     try {
       const { data } = await authApi.me();
