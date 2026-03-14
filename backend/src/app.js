@@ -14,6 +14,9 @@ const taskRoutes = require('./routes/v1/task.routes');
 
 const app = express();
 
+// Trust proxy (required for Render/Railway/Heroku deployments)
+app.set('trust proxy', 1);
+
 // Security headers
 app.use(helmet());
 
